@@ -6,68 +6,53 @@
     <meta name="description" content="Bitnami: Open Source. Simplified.">
     <meta name="author" content="Bitnami">
     <link rel="stylesheet" media="screen" href="//unpkg.com/@bitnami/hex/dist/hex.min.css">
+	<style>
+	h3 {text-align: center;}
+	p {text-align: center;}
+	div {text-align: center;}
+	</style>
   </head>
   <body>
     <main class="margin-t-huge">
       <section aria-labelledby="installation-title" aria-describedby="installation-desc" class="container container-tiny margin-b-giant">
-        <h1 id="installation-title">StoRoc</h1>
+        <h3 id="installation-title"><strong>StoRoc Alpha Release</strong></h1>
         <div aria-hidden="true" style="height: 4px; width: 100%;" class="gradient-135-brand"></div>
-        <p id="installation-desc" class="type-big">You are now running <strong>the best EECS495 Project</strong> in the Cloud.</p>
+        <p id="installation-desc" class="type-big">Hello-StoRoc@umich.edu</p>
+	<p id="installation-desc" class="type-big">Stefany Escobedo, Nick Holden, Julien Faro, Kurt VonEhr</p>
+	<div aria-hidden="true" style="height: 4px; width: 100%;" class="gradient-135-brand"></div>
       </section>
-      <section aria-labelledby="links-title" aria-describedby="links-desc" class="bg-light padding-v-bigger margin-v-enormous">
-        <div class="container container-tiny">
-          <div class="row row-collapse-b-tablet align-center ">
-            <div class="col-6">
-              <h3 id="links-title" class="margin-t-reset">Useful Links</h3>
-              <p id="links-desc" class="margin-b-reset">The following links will help you to understand better how to get started and configure the application you just launched.</p>
-            </div>
-            <div class="col-6">
-              <ul class="remove-style margin-reset">
-                <li class="padding-v-normal"><a href="https://docs.bitnami.com/azure/infrastructure/mean/get-started/get-started/" target="_blank" style="width: 100%;" class="button text-c button-accent">Get Started</a></li>
-                <li class="padding-v-normal"><a href="https://docs.bitnami.com/azure/infrastructure/mean/" target="_blank" style="width: 100%;" class="button text-c button-primary">Documentation</a></li>
-                <li class="padding-v-normal"><a href="https://community.bitnami.com/" target="_blank" style="width: 100%;" class="button text-c button-primary">Support</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section aria-labelledby="start-title" aria-describedby="start-desc">
-        <div class="container container-tiny margin-v-enormous">
-          <h3 id="start-title">Quick Start</h3>
-          <p id="start-desc"><a href="https://docs.bitnami.com/azure/faq/get-started/connect-ssh/" target="_blank">Connect to your server</a> and run the following commands:</p>
-          <div class="Terminal">
-            <div class="Terminal__Top type-small">
-              <div class="Terminal__Top__Buttons" aria-hidden="true">
-                <span class="Terminal__Top__Button Terminal__Top__Button--red"></span>
-                <span class="Terminal__Top__Button Terminal__Top__Button--yellow"></span>
-                <span class="Terminal__Top__Button Terminal__Top__Button--green"></span>
-              </div>
-            </div>
-            <div class="Terminal__Tab">
-<!-- Not alligned to avoid issues with copy and paste -->
-<pre class="Terminal__Code">
-<code class="Terminal__Code__Command" aria-label="Command">express --view pug ~/projects/sample</code>
-<code class="Terminal__Code__Command" aria-label="Command">cd ~/projects/sample</code>
-<code class="Terminal__Code__Command" aria-label="Command">npm install</code>
-<code class="Terminal__Code__Command" aria-label="Command">DEBUG=sample:* npm start</code>
-<code aria-label="Command Output">
-&gt; sample@0.0.0 start /opt/bitnami/projects/sample
-&gt; node ./bin/www
+    <main/>
+	<h3> Store Info</h3>
 
-sample:server Listening on port 3000 +0ms
-</code>
-</pre>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-    <footer class="text-c">
-      <div class="container container-tiny margin-v-enormous">
-        <hr class="separator separator-small margin-b-bigger">
-        <a class="light" href="https://bitnami.com/" aria-label="Go to the Bitnami site" target="_blank"><img class="osFooter__logo" src="https://bitnami.com/downloads/logos/bitnami.png" alt="Bitnami Logo"></a>
-        <p class="type-small margin-reset">Proudly built by Bitnami</p>
-      </div>
-    </footer>
-  </body>
-</html>
+	<p>
+	company: <span id=comp></span><br />
+	sector: <span id=sect></span><br />
+	street_address: <span id=street_address></span><br />
+	city: <span id=city></span><br />
+	state: <span id=state></span>
+	</p>
+
+	<h3>Occupancy</h3>
+	
+	<p>
+	current_occupancy: <span id=current_occupancy></span>
+	</p>
+
+	<script>
+	const api_url = 'http://52.168.148.0/api';
+	async function getData() {
+		const response = await fetch(api_url);
+		const data = await response.json();
+		const { sector, company, street_address, city, state, current_occupancy } = data;
+
+                document.getElementById(‘company’).textContent = company;
+                document.getElementById(‘sector’).textContent = sector;
+                document.getElementById(‘street_address’).textContent = street_address;
+                document.getElementById(‘city’).textContent = city;
+                document.getElementById(‘state’).textContent = state;
+                document.getElementById(‘current_occupancy’).textContent = current_occupancy;	
+		}
+	getData();	
+	</script>
+    </body>
+</html> 
