@@ -25,33 +25,33 @@
 	<h3> Store Info</h3>
 
 	<p>
-	company: <span id=comp></span><br />
-	sector: <span id=sect></span><br />
-	street_address: <span id=street_address></span><br />
-	city: <span id=city></span><br />
-	state: <span id=state></span>
+	Company: <span id=company></span><br />
+	Sector: <span id=sector></span><br />
+	Street Address: <span id=street_address></span><br />
+	City: <span id=city></span><br />
+	State: <span id=state></span>
 	</p>
 
 	<h3>Occupancy</h3>
 	
 	<p>
-	current_occupancy: <span id=current_occupancy></span>
+	Current Occupancy: <span id=current_occupancy></span>
 	</p>
 
 	<script>
 	const api_url = 'http://52.168.148.0/api';
 	async function getData() {
 		const response = await fetch(api_url);
-		const data = await response.json();
-		const { sector, company, street_address, city, state, current_occupancy } = data;
-
-                document.getElementById(‘company’).textContent = company;
-                document.getElementById(‘sector’).textContent = sector;
-                document.getElementById(‘street_address’).textContent = street_address;
-                document.getElementById(‘city’).textContent = city;
-                document.getElementById(‘state’).textContent = state;
-                document.getElementById(‘current_occupancy’).textContent = current_occupancy;	
-		}
+		const store = await response.json();
+		console.log(store.company);
+		
+		document.getElementById("company").textContent = store.company;
+                document.getElementById("sector").textContent = store.sector;
+                document.getElementById("street_address").textContent = store.street_address;
+                document.getElementById("city").textContent = store.city;
+                document.getElementById("state").textContent = store.state;
+                document.getElementById("current_occupancy").textContent = store.current_occupancy;
+	}
 	getData();	
 	</script>
     </body>
