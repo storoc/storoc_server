@@ -32,7 +32,7 @@ app.post('/', function (req, res, next) {
 app.get('/',function(req,res){
 
    	//determine desired store ID
-   	const store_id = 1;
+   	const store_id = req.query.unique_id;
 
    	//get store info for given store ID
    	storeInfo = getStoreInfo(store_id);
@@ -56,17 +56,23 @@ async function getStoreInfo(storeID) {
      */
     const client = new MongoClient(uri);
 
+    var store = new Object();
+        store.unique_id = storeID;
+
+	console.log(store);
+
     try {
         // Connect to the MongoDB cluster
         await client.connect();
 
         // Find associated data for the given store ID
-        store_data = await client.db("stores").collection("stores").findOne({ unique_id: 1 });
+        store_data = await client.db("stores").collection("stores").findOne(store);
     } catch (e) {
         console.error(e);
     } finally {
         // Close the connection to the MongoDB cluster
         await client.close();
+	console.log(store_data);
 	return store_data;
     }
 }

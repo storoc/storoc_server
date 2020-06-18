@@ -27,6 +27,26 @@ Requests are limited 1 per second
 
 ## Endpoints 
 
+All API requests will be directed to the '/api' endpoint
+
+## Queries
+
+To access database content, an HTTP GET request is used with MIME type = JSON.
+
+The URL request includes the fields for the request, using URL query string
+formating. For example, to request information about a particular store, the
+unique ID is sent to the server using the following format:
+
+>http://URL/api?unique_id=place_id_from_google
+
+To link our database with the Google API results, the unique_id for each store
+is the same as the place_id provided by Google.
+
+To update database information, only authenticated sensors located at participating
+stores will be able to write this information.
+
+##Database Documents and Collections
+
 Below is a list of resources which will show participating consumer 
 goods sectors, companies within each of the sectors, and individual stores of 
 those various companies. For example, if a shopper wants to see which 
