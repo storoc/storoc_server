@@ -10,7 +10,8 @@ The data may include current occupancy status as well as historical
 occupancy trends, depending on the settings the store manager configures.
  
 ## Authentication
-No authentication is required to access the publicly available data.
+No authentication is required to request the publicly available data.
+Authentication is required to write to the server database. 
 
 The business facing user interface requires login and 
 authentication. Certain levels of information can be configured by the 
@@ -45,7 +46,7 @@ is the same as the place_id provided by Google.
 To update database information, only authenticated sensors located at participating
 stores will be able to write this information.
 
-##Database Documents and Collections
+## Database Documents and Collections
 
 Below is a list of resources which will show participating consumer 
 goods sectors, companies within each of the sectors, and individual stores of 
