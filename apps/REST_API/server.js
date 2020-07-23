@@ -9,6 +9,15 @@ const db_url = "mongodb://localhost:27017/stores";
 //instantiate mongo client
 const client = new MongoClient(db_url);
 
+const cors = require('cors');
+app.use(cors());
+
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
 //create the server port for listening to incoming HTTP requests
 //the traffic is routed from Port 80 to Port 8000 by configuring 
 //Apache with a reverse proxy on requests to the /api endpoint
@@ -39,7 +48,9 @@ app.get('/',function(req,res){
 
 	//when async function resolves, update value
 	storeInfo.then((value) => {
-		res.json(value);
+  		res.header("Access-Control-Allow-Origin", "*");
+  		res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+		res.jsonp(value);
 	});
 })
 
