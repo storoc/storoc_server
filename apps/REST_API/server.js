@@ -33,11 +33,13 @@ app.use(express.json({ limit: '1mb' }));
 //handler for incoming POST requests
 app.post('/', function (req, res, next) {
 
-	try{
+    //minor check of user inputs for validity
+	if ((req.body.unique_id !== null) && (req.body.current_occupancy < 500)
+        && (req.body.current_occupancy > 0)){
         setStoreOcc(req.body.unique_id, req.body.current_occupancy);
     	res.status('200');
     }
-    catch{
+    else{
         res.status('400');
     }
 
