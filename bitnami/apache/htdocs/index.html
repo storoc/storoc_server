@@ -1,58 +1,16 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>StoRoc</title>
-    <meta name="description" content="Bitnami: Open Source. Simplified.">
-    <meta name="author" content="Bitnami">
-    <link rel="stylesheet" media="screen" href="//unpkg.com/@bitnami/hex/dist/hex.min.css">
-	<style>
-	h3 {text-align: center;}
-	p {text-align: center;}
-	div {text-align: center;}
-	</style>
-  </head>
-  <body>
-    <main class="margin-t-huge">
-      <section aria-labelledby="installation-title" aria-describedby="installation-desc" class="container container-tiny margin-b-giant">
-        <h3 id="installation-title"><strong>StoRoc Alpha Release</strong></h1>
-        <div aria-hidden="true" style="height: 4px; width: 100%;" class="gradient-135-brand"></div>
-        <p id="installation-desc" class="type-big">Hello-StoRoc@umich.edu</p>
-	<p id="installation-desc" class="type-big">Stefany Escobedo, Nick Holden, Julien Faro, Kurt VonEhr</p>
-	<div aria-hidden="true" style="height: 4px; width: 100%;" class="gradient-135-brand"></div>
-      </section>
-    <main/>
-	<h3> Store Info</h3>
-
-	<p>
-	Company: <span id=company></span><br />
-	Sector: <span id=sector></span><br />
-	Street Address: <span id=street_address></span><br />
-	City: <span id=city></span><br />
-	State: <span id=state></span>
-	</p>
-
-	<h3>Occupancy</h3>
-	
-	<p>
-	Current Occupancy: <span id=current_occupancy></span>
-	</p>
-
-	<script>
-	const api_url = 'http://52.168.148.0/api?unique_id=ChIJ82TJ8MaxPIgRGd8xSBhWo54';
-	async function getData() {
-		const response = await fetch(api_url);
-		const store = await response.json();
-		console.log(store.company);
-		
-		document.getElementById("company").textContent = store.company;
-                document.getElementById("sector").textContent = store.sector;
-                document.getElementById("street_address").textContent = store.street_address;
-                document.getElementById("city").textContent = store.city;
-                document.getElementById("state").textContent = store.state;
-                document.getElementById("current_occupancy").textContent = store.current_occupancy;
-	}
-	getData();	
-	</script>
-    </body>
-</html> 
+<head>
+  <meta charset="utf-8">
+  <title>Storoc</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyDb4V9_b8953GpZkDeziEZXqckuyFukgwk"></script>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
+<link rel="stylesheet" href="styles.dc7fa9180cdca96de851.css"></head>
+<body class="mat-typography">
+  <app-root></app-root>
+<script src="runtime-es2015.409e6590615fb48d139f.js" type="module"></script><script src="runtime-es5.409e6590615fb48d139f.js" nomodule defer></script><script src="polyfills-es5.341d48ffc88eaeae911d.js" nomodule defer></script><script src="polyfills-es2015.95bb65e853d2781ac3bd.js" type="module"></script><script src="main-es2015.07de69b7463591e968a9.js" type="module"></script><script src="main-es5.07de69b7463591e968a9.js" nomodule defer></script></body>
+</html>

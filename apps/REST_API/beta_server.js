@@ -34,7 +34,7 @@ app.use(express.json({ limit: '1mb' }));
 app.post('/', function (req, res, next) {
 
 	setStoreOcc(req.body.unique_id, req.body.current_occupancy);
-	res.status('200');
+	res.send('OK');
 })
 
 //handler for incoming GET requests
@@ -53,7 +53,6 @@ app.get('/',function(req,res){
 		res.jsonp(value);
 	});
 })
-
 
 async function getStoreInfo(storeID) {
     /**
