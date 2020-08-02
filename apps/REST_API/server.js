@@ -72,7 +72,13 @@ app.get('/',function(req,res){
 	storeInfo.then((value) => {
   		res.header("Access-Control-Allow-Origin", "*");
   		res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-		res.jsonp(value);
+        if (value !== null){
+            res.jsonp(value);
+            res.status('200');
+        }
+        else{
+            res.status('404');
+        }
 	});
 })
 
