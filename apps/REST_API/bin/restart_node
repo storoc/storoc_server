@@ -1,0 +1,10 @@
+#!/bin/bash
+set -Eeuo pipefail
+set -x
+
+if pgrep -f node; then
+	pkill -f node
+	pid=$!
+	tail --pid=$pid -f /dev/null
+	nohup ./etc/init.d/boot_node.sh &
+fi
