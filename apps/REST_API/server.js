@@ -48,14 +48,28 @@ app.post('/', function (req, res, next) {
 //handler for registration posts
 app.post('/register/', function (req, res, next) {
 
-
+    res.status(200).json({
+      "message" : "register"
+    });
 
 })
 
 //handler for login posts
 app.post('/login/', function (req, res, next) {
 
+    res.status(200).json({
+      "message" : "login"
+    });
 
+})
+
+
+//handler for login posts
+app.get('/profile/USERID', function (req, res, next) {
+
+    res.status(200).json({
+      "message" : "userid"
+    });
 
 })
 
@@ -73,11 +87,12 @@ app.get('/',function(req,res){
   		res.header("Access-Control-Allow-Origin", "*");
   		res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
         if (value !== null){
-            res.jsonp(value);
-            res.status('200');
+            res.status(200).jsonp(value);
         }
         else{
-            res.status('404');
+            res.status(400).json({
+              "message" : "Error: Null Place ID"
+            });
         }
 	});
 })
