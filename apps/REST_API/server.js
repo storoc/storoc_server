@@ -19,7 +19,7 @@ app.use(function(req, res, next) {
 });
 
 //create the server port for listening to incoming HTTP requests
-//the traffic is routed from Port 80 to Port 8000 by configuring 
+//the traffic is routed from Port 80 to Port 8000 by configuring
 //Apache with a reverse proxy on requests to the /api endpoint
 app.listen(8000);
 
@@ -33,8 +33,28 @@ app.use(express.json({ limit: '1mb' }));
 //handler for incoming POST requests
 app.post('/', function (req, res, next) {
 
-	setStoreOcc(req.body.unique_id, req.body.current_occupancy);
-	res.status('200');
+	try{
+        setStoreOcc(req.body.unique_id, req.body.current_occupancy);
+    	res.status('200');
+    }
+    catch{
+        res.status('400');
+    }
+
+})
+
+//handler for registration posts
+app.post('/register/', function (req, res, next) {
+
+
+
+})
+
+//handler for login posts
+app.post('/login/', function (req, res, next) {
+
+
+
 })
 
 //handler for incoming GET requests
@@ -124,4 +144,3 @@ async function setStoreOcc(storeID, current_occupancy) {
         await client.close();
     }
 }
-
