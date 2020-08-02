@@ -5,3 +5,5 @@ omi/
 apps/REST_API/node_modules/
 apps/REST_API/storoc_db/
 apps/REST_API/db_logs/
+apps/REST_API/nohup.out
+*.out

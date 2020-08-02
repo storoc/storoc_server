@@ -21,7 +21,7 @@ app.use(function(req, res, next) {
 //create the server port for listening to incoming HTTP requests
 //the traffic is routed from Port 80 to Port 8000 by configuring
 //Apache with a reverse proxy on requests to the /api endpoint
-app.listen(8000);
+app.listen(8001);
 
 //define a static endpoint for connecting to the db
 app.use('/storoc', express.static('/storoc_db'));
