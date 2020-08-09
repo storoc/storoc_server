@@ -176,7 +176,7 @@ async function setStoreMaxOcc(storeID, max_occ) {
     }
 }
 
-async function setStoreComents(storeID, manager_comments) {
+async function setStoreComments(storeID, manager_comments) {
     /**
      * Connection URI. Update <username>, <password>, and <your-cluster-url> to re$
      * See https://docs.mongodb.com/ecosystem/drivers/node/ for more details
