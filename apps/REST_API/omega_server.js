@@ -160,7 +160,7 @@ async function setStoreMaxOcc(storeID, max_occ) {
 
 
     console.log(store);
-    console.log(max_occupancy);
+    console.log(store_max_occupancy);
 
     try {
         // Connect to the MongoDB cluster
