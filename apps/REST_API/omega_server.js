@@ -132,7 +132,7 @@ async function setStoreOcc(storeID, current_occupancy) {
 }
 
 
-async function setStoreSettings(storeID, store_comments) {
+async function setStoreSettings(storeID, manager_comments) {
     /**
      * Connection URI. Update <username>, <password>, and <your-cluster-url> to re$
      * See https://docs.mongodb.com/ecosystem/drivers/node/ for more details
@@ -148,8 +148,8 @@ async function setStoreSettings(storeID, store_comments) {
     var store = new Object();
     store.unique_id = storeID;
 
-    var comments = new Object();
-	comments.store_comments = store_comments;
+    var store_comments = new Object();
+	store_comments.comments = manager_comments;
 
     //var max_occupancy = new Object();
     //max_occupancy.max_occupancy = max_occupancy;
@@ -157,14 +157,14 @@ async function setStoreSettings(storeID, store_comments) {
 
     console.log(store);
     //console.log(max_occupancy);
-    console.log(comments);
+    console.log(store_comments);
 
     try {
         // Connect to the MongoDB cluster
         await client.connect();
 
         // Find associated data for the given store ID
-        store_data = await client.db("stores").collection("stores").updateOne(store, {$set: comments});
+        store_data = await client.db("stores").collection("stores").updateOne(store, {$set: store_comments});
     } catch (e) {
         console.error(e);
     } finally {
