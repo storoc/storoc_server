@@ -19,7 +19,7 @@ app.use(function(req, res, next) {
 });
 
 //create the server port for listening to incoming HTTP requests
-//the traffic is routed from Port 80 to Port 8000 by configuring
+//the traffic is routed from Port 80 to Port 8000 by configuring 
 //Apache with a reverse proxy on requests to the /api endpoint
 app.listen(8000);
 
@@ -33,16 +33,8 @@ app.use(express.json({ limit: '1mb' }));
 //handler for incoming POST requests
 app.post('/', function (req, res, next) {
 
-    //minor check of user inputs for validity
-	if ((req.body.unique_id !== null) && (req.body.current_occupancy < 500)
-        && (req.body.current_occupancy > 0)){
-        setStoreOcc(req.body.unique_id, req.body.current_occupancy);
-    	res.status('200');
-    }
-    else{
-        res.status('400');
-    }
-
+	setStoreOcc(req.body.unique_id, req.body.current_occupancy);
+	res.send('OK');
 })
 
 //handler for incoming GET requests
@@ -58,17 +50,9 @@ app.get('/',function(req,res){
 	storeInfo.then((value) => {
   		res.header("Access-Control-Allow-Origin", "*");
   		res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-        if (store_id !== null){
-            res.status(200).jsonp(value);
-        }
-        else{
-            res.status(400).json({
-              "message" : "Error: Null Place ID"
-            });
-        }
+		res.jsonp(value);
 	});
 })
-
 
 async function getStoreInfo(storeID) {
     /**
@@ -139,3 +123,4 @@ async function setStoreOcc(storeID, current_occupancy) {
         await client.close();
     }
 }
+
