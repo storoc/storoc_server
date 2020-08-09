@@ -164,7 +164,7 @@ async function setStoreSettings(storeID, max_occupancy, comments) {
         await client.connect();
 
         // Find associated data for the given store ID
-        store_data = await client.db("stores").collection("stores").updateOne(store, {$set: {"max_occupancy": max_occupancy, "comments": comments}});
+        store_data = await client.db("stores").collection("stores").updateOne(store, {$set: max_occupancy});
     } catch (e) {
         console.error(e);
     } finally {
