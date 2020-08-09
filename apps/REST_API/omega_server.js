@@ -40,7 +40,7 @@ app.post('/', function (req, res, next) {
 //handler for incoming POST requests
 app.post('/store_management', function (req, res, next) {
 
-	setStoreSettings(req.body.unique_id, req.body.max_occupancy, req.body.comments);
+	setStoreSettings(req.body.unique_id, req.body.max_occupancy);
 	res.send('OK');
 })
 
@@ -132,7 +132,7 @@ async function setStoreOcc(storeID, current_occupancy) {
 }
 
 
-async function setStoreSettings(storeID, max_occupancy, comments) {
+async function setStoreSettings(storeID, max_occupancy) {
     /**
      * Connection URI. Update <username>, <password>, and <your-cluster-url> to re$
      * See https://docs.mongodb.com/ecosystem/drivers/node/ for more details
@@ -148,8 +148,8 @@ async function setStoreSettings(storeID, max_occupancy, comments) {
     var store = new Object();
     store.unique_id = storeID;
 
-    var comments = new Object();
-	comments.comments = comments;
+    // var comments = new Object();
+	// comments.comments = comments;
 
     var max_occupancy = new Object();
     max_occupancy.max_occupancy = max_occupancy;
@@ -157,7 +157,7 @@ async function setStoreSettings(storeID, max_occupancy, comments) {
 
     console.log(store);
     console.log(max_occupancy);
-    console.log(comments);
+    // console.log(comments);
 
     try {
         // Connect to the MongoDB cluster
